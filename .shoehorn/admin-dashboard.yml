@@ -1,0 +1,48 @@
+schemaVersion: 1
+service:
+  id: admin-dashboard
+  name: Admin Dashboard
+  type: frontend
+owner:
+  - type: team
+    id: frontend-team
+  - type: team
+    id: platform-team
+lifecycle: production
+description: Internal admin dashboard for operations, user management, and system monitoring
+tags:
+  - frontend
+  - admin
+  - svelte
+  - typescript
+  - internal-tools
+links:
+  - name: Repository
+    url: https://github.com/company/admin-dashboard
+  - name: Production
+    url: https://admin.company.com
+  - name: Staging
+    url: https://admin-staging.company.com
+  - name: Design System
+    url: https://storybook.company.com/admin
+  - name: User Guide
+    url: https://docs.company.com/admin-dashboard
+relations:
+  - type: consumes_api
+    target: service:user-api
+    notes: User management and moderation
+  - type: consumes_api
+    target: service:analytics-service
+    notes: Platform metrics and dashboards
+  - type: consumes_api
+    target: service:auth-service
+    notes: Admin authentication with 2FA
+  - type: consumes_api
+    target: service:ml-recommendation-service
+    notes: Model performance and A/B test results
+  - type: reads_from
+    target: database:postgres-db
+    notes: Direct database queries for advanced reports
+  - type: deployed_to
+    target: service:kubernetes-prod
+    notes: Internal-only ingress
